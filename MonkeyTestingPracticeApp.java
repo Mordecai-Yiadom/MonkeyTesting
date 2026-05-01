@@ -13,6 +13,7 @@ public class MonkeyTestingPracticeApp {
     private static final List<String> accounts = new ArrayList<>();
     private static boolean loggedIn = false;
     private static String currentUser = "";
+    private static double balance = 100.0;
 
     public static void main(String[] args) {
         seedData();
@@ -152,6 +153,19 @@ public class MonkeyTestingPracticeApp {
         // BUG: If the current logged-in account is deleted, session is not updated.
         System.out.println("Deleted account: " + removed);
     }
+
+    private static void withdrawMoney() {
+        System.out.println("Current balance: $" + balance);
+        System.out.print("Enter amount to withdraw: ");
+        double amount = Double.parseDouble(scanner.nextLine());
+
+        // BUGS:
+        // - No login required
+        // - Negative amount increases balance
+        // - No limit checks
+        balance -= amount;
+
+        System.out.println("New balance: $" + balance);
 
     
 }
